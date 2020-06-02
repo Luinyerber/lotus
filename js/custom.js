@@ -18,10 +18,10 @@
         var offset = $c.offset().top;
         var scroll = $w.scrollTop();
         var diff = offset - scroll;
-        var pos = 'center ' + (-diff)*0.2 + 'px';
-        $c.css({'backgroundPosition':pos});
+        var pos = 'center ' + (-diff) * 0.2 + 'px';
+        $c.css({ 'backgroundPosition': pos });
     }
-    $w.bind('scroll', function(e){
+    $w.bind('scroll', function(e) {
         move(newsletterSimple);
         move(productInfo);
     });
@@ -29,17 +29,17 @@
 
     // Preloader
     //-------------------------------------------------------------------------------
-    window.onscroll = function () {
+    window.onscroll = function() {
         window.scrollTo(0, 0);
     };
 
-    $(window).load(function () {
-        setTimeout(function () {
-            window.onscroll = function () {};
+    $(window).load(function() {
+        setTimeout(function() {
+            window.onscroll = function() {};
             $('#page-preloader').addClass('slideOutUp');
 
             // Fix for IE 9
-            setTimeout(function () {
+            setTimeout(function() {
                 $('#page-preloader').addClass('hidden');
             }, 700);
 
@@ -55,14 +55,14 @@
 
     // Initialize Datetimepicker
     //-------------------------------------------------------------------------------
-    $('.datepicker').datepicker().on('changeDate', function () {
+    $('.datepicker').datepicker().on('changeDate', function() {
         $(this).datepicker('hide');
     });
 
 
     // Show Appointment Modal
     //-------------------------------------------------------------------------------
-    $('.show-appointment-modal').on('click', function () {
+    $('.show-appointment-modal').on('click', function() {
         var service = $(this).data('service');
         if (service) {
             $("#appointment-service").val(service);
@@ -74,24 +74,24 @@
 
     // Scroll To Animation
     //-------------------------------------------------------------------------------
-    $('body').scrollspy({target: '#navigation-top-1', offset: 88});
+    $('body').scrollspy({ target: '#navigation-top-1', offset: 88 });
 
     var scrollTo = $(".scroll-to");
 
-    scrollTo.click(function (event) {
+    scrollTo.click(function(event) {
         $('.modal').modal('hide');
         var position = $(document).scrollTop();
         var scrollOffset = 87;
 
         var marker = $(this).attr('href');
-        $('html, body').animate({scrollTop: $(marker).offset().top - scrollOffset}, 'slow');
+        $('html, body').animate({ scrollTop: $(marker).offset().top - scrollOffset }, 'slow');
         return false;
     });
 
 
     // Scroll Up Btn
     //-------------------------------------------------------------------------------
-    $(window).scroll(function(){
+    $(window).scroll(function() {
         if ($(this).scrollTop() > 100) {
             $('.scroll-up-btn').removeClass("animated fadeOutRight");
             $('.scroll-up-btn').fadeIn().addClass("animated fadeInRight");
@@ -105,7 +105,7 @@
 
     // Navigation Top
     //-------------------------------------------------------------
-    $(document).scroll(function () {
+    $(document).scroll(function() {
         var y = $(this).scrollTop();
         if (y > 300) {
             $('.navbar-hidden').fadeIn();
@@ -117,13 +117,13 @@
 
     // Gallery
     //-------------------------------------------------------------
-    $(".gallery .gallery-thumbnail-container").on("click", function () {
+    $(".gallery .gallery-thumbnail-container").on("click", function() {
 
         var src = $(this).find("img").data('img');
         var galleryImg = $('<img/>').attr('src', src).addClass('img-responsive');
 
         var galleryImgWidth;
-        galleryImg.load(function () {
+        galleryImg.load(function() {
             galleryImgWidth = this.width;
         });
 
@@ -132,12 +132,12 @@
 
 
         $('#galleryModal').modal();
-        $('#galleryModal').on('shown.bs.modal', function () {
+        $('#galleryModal').on('shown.bs.modal', function() {
             $('#galleryModal .modal-dialog').css('max-width', galleryImgWidth);
             $('#galleryModal .modal-body').html(galleryImg);
             $('#galleryModal .modal-nav .title').html(imgTitle + ' - ' + imgSubtitle);
         });
-        $('#galleryModal').on('hidden.bs.modal', function () {
+        $('#galleryModal').on('hidden.bs.modal', function() {
             $('#galleryModal .modal-body').html('');
         });
     });
@@ -148,7 +148,7 @@
     function fullscreenFix() {
         var h = $('body').height();
         // set .fullscreen height
-        $(".content-b").each(function (i) {
+        $(".content-b").each(function(i) {
             if ($(this).innerHeight() <= h) {
                 $(this).closest(".fullscreen").addClass("not-overflow");
             }
@@ -162,7 +162,7 @@
     /* resize background images */
     function backgroundResize() {
         var windowH = $(window).height();
-        $(".header-full-screen-img").each(function (i) {
+        $(".header-full-screen-img").each(function(i) {
             var path = $(this);
             // variables
             var contW = path.width();
@@ -202,7 +202,7 @@
     // Contact Form
     //-------------------------------------------------------------
 
-    $("#contact-form-gmap").submit(function () {
+    $("#contact-form-gmap").submit(function() {
 
         $('#contact-form-gmap-msg').addClass('hidden');
         $('#contact-form-gmap-msg').removeClass('alert-success');
@@ -215,7 +215,7 @@
             url: "php/index.php",
             data: $("#contact-form-gmap").serialize(),
             dataType: "json",
-            success: function (data) {
+            success: function(data) {
 
                 if ('success' == data.result) {
                     $('#contact-form-gmap-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
@@ -240,7 +240,7 @@
     // Appointment Form
     //-------------------------------------------------------------
 
-    $("#appointment-form").submit(function () {
+    $("#appointment-form").submit(function() {
 
         $('#appointment-form-msg').addClass('hidden');
         $('#appointment-form-msg').removeClass('alert-success');
@@ -253,7 +253,7 @@
             url: "php/index.php",
             data: $("#appointment-form").serialize(),
             dataType: "json",
-            success: function (data) {
+            success: function(data) {
 
                 if ('success' == data.result) {
                     $('#appointment-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
@@ -278,7 +278,7 @@
     // Newsletter Form
     //-------------------------------------------------------------------------------
 
-    $( "#newsletter-form" ).submit(function() {
+    $("#newsletter-form").submit(function() {
 
         $('#newsletter-form-msg').addClass('hidden');
         $('#newsletter-form-msg').removeClass('alert-success');
@@ -293,17 +293,15 @@
             dataType: "json",
             success: function(data) {
 
-                if('success' == data.result)
-                {
-                    $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
+                if ('success' == data.result) {
+                    $('#newsletter-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
                     $('#newsletter-form-msg').html(data.msg[0]);
                     $('#newsletter-form input[type=submit]').removeAttr('disabled');
                     $('#newsletter-form')[0].reset();
                 }
 
-                if('error' == data.result)
-                {
-                    $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+                if ('error' == data.result) {
+                    $('#newsletter-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
                     $('#newsletter-form-msg').html(data.msg);
                     $('#newsletter-form input[type=submit]').removeAttr('disabled');
                 }
@@ -336,7 +334,7 @@
     map = new google.maps.Map(document.getElementById('contact-map'), mapOptions);
 
     var contentString = '<div id="content">' +
-        '<strong>'+sLotus-Esthetic+'</strong><br>' +
+        '<strong> sLotus-Esthetic </strong><br>' +
         '16767 Los Banos St, San Leandro, CA 94578, EE. UU.' +
         '</div>';
 
@@ -344,7 +342,7 @@
         content: contentString
     });
 
-    geocoder.geocode({'address': address}, function (results, status) {
+    geocoder.geocode({ 'address': address }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
@@ -354,16 +352,16 @@
                 title: 'Uluru (Ayers Rock)'
             });
 
-            google.maps.event.addListener(marker, 'click', function () {
+            google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map, marker);
             });
 
         } else {
-          
-            
+
+
         }
     });
 
 
-// end document ready
+    // end document ready
 })(jQuery);

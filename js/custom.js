@@ -323,11 +323,13 @@
 
     geocoder = new google.maps.Geocoder();
 
+    var myLatLng = { lat: 37.6942041, lng: -122.1058012 };
+
     var mapOptions = {
         zoom: 12,
         draggable: draggable,
         mapTypeControl: false,
-        center: new google.maps.LatLng(37.6942041, -122.1058012),
+        center: myLatLng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
 
